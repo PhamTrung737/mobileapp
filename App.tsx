@@ -1,20 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+
+import {     View } from 'react-native';
+import InputTime from './component/inputTime';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import CountDown from './component/countdown';
+import { RootStackParamList } from './type/type.navigation';
 
 export default function App() {
+  const Stack = createNativeStackNavigator<RootStackParamList>();
+    
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+    <Stack.Navigator>
+      <Stack.Screen name="Home" component={InputTime} />
+      <Stack.Screen name='countdown' component={CountDown}/>
+    </Stack.Navigator>
+  </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
